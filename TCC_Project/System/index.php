@@ -24,6 +24,8 @@
 
     if(!$_SESSION['user']['ADM'])
         $WHERE[] = "UG.ID_Usuario = " . $_SESSION['user']['id'];
+    else
+        $WHERE[] = "(UG.ID_Usuario = 2 OR UG.ID_Usuario IS NULL)";
 
     if($favFilter == "true")
         $WHERE[] = "F.ID_Usuario = UG.ID_Usuario";
