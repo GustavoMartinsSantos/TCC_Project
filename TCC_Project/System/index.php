@@ -22,11 +22,11 @@
 
     $WHERE = ["Titulo LIKE '%".str_replace(' ', '%', $search)."%'"];
 
-    if(!$_SESSION['user']['ADM'])
-        $WHERE[] = "UG.ID_Usuario = " . $_SESSION['user']['id'];
+    if($_SESSION['user']['ADM'])
+        $WHERE[] = "(UG.ID_Usuario = " . $_SESSION['user']['id'] . " OR UG.ID_Usuario IS NULL)";
     else
-        $WHERE[] = "(UG.ID_Usuario = 2 OR UG.ID_Usuario IS NULL)";
-
+        $WHERE[] = "UG.ID_Usuario = " . $_SESSION['user']['id'];
+        
     if($favFilter == "true")
         $WHERE[] = "F.ID_Usuario = UG.ID_Usuario";
 
