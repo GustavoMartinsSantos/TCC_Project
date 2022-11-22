@@ -1,0 +1,76 @@
+* {
+    font-family: 'Roboto', sans-serif; 
+    text-align: center;
+}
+
+body {
+    background-color: #e1e1e1;
+    vertical-align: middle;
+}
+
+#area {
+    background-color: white;
+    position: relative;
+    top: 75px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 830px;
+    height: 450px;
+    border-radius: 10px;
+}
+
+legend {
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-size: 35px;
+    color: #e1e1e1;
+    background-color: #004286;
+    opacity: 1;
+}
+
+.most_se {
+    left: 0px;
+    column-gap: 20px;
+}
+
+.text_box {
+    font-size: 16px;
+    border-style: double;
+    text-align: left;
+    border-radius: 10px;
+}
+
+/*posiÃ§Ã£o da imagem*/
+.user_pos {
+    left: 60px;
+    position: absolute;
+}
+
+/*posiÃ§Ã£o do ficheiro*/
+.file_pos {
+    cursor: pointer;
+    left: 60px;
+    position: absolute;             
+}
+
+.user_cad_img {
+    cursor: pointer; 
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+}
+
+.input_file {
+    width: 190px;
+    height: 190px;
+    opacity: 0;
+}
+
+.btn {
+    width: 40%;
+}
+
+.lbl {
+    margin-left: 0.5%;
+}

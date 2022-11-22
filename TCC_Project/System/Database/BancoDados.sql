@@ -1,0 +1,122 @@
+DROP DATABASE  IF EXISTS TCC_DB;
+CREATE DATABASE TCC_DB;
+USE TCC_DB;
+
+CREATE TABLE tbl_Usuario (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(30) NOT NULL,
+    Sobrenome VARCHAR(100),
+    Email VARCHAR(100) NOT NULL UNIQUE,
+    Senha VARCHAR(10) NOT NULL,
+    ADM INT NOT NULL,
+    ID_Imagem INT
+);
+
+CREATE TABLE tbl_Imagem (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE tbl_Grupo (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE tbl_Classificacao (
+    ID INT PRIMARY KEY,
+    Nome VARCHAR(50)
+);
+
+CREATE TABLE tbl_Evento (
+    Cod INT PRIMARY KEY,
+    Titulo VARCHAR(200) NOT NULL,
+    DataHora_Inicio DATETIME,
+    DataHora_Venc DATETIME,
+    Descricao TEXT,
+    ID_Imagem INT
+);
+
+CREATE TABLE tbl_UsuarioXGrupo (
+    ID_Usuario INT,
+    ID_Grupo INT,
+    Permissao INT NOT NULL,
+    PRIMARY KEY (ID_Usuario, ID_Grupo)
+);
+
+CREATE TABLE tbl_EventoXGrupo (
+    Cod_Evento INT,
+    ID_Grupo INT,
+    PRIMARY KEY (Cod_Evento, ID_Grupo)
+);
+
+CREATE TABLE tbl_Classifica (
+    ID_Classificacao INT,
+    Cod_Evento INT,
+    PRIMARY KEY (Cod_Evento, ID_Classificacao)
+);
+
+CREATE TABLE tbl_Favorita (
+    ID_Usuario INT,
+    Cod_Evento INT,
+    PRIMARY KEY (Cod_Evento, ID_Usuario)
+);
+
+ALTER TABLE tbl_Usuario ADD CONSTRAINT FK_Imagem_Usuario
+FOREIGN KEY (ID_Imagem)
+REFERENCES tbl_Imagem (ID)
+ON UPDATE CASCADE
+ON DELETE SET NULL;
+ 
+ALTER TABLE tbl_Evento ADD CONSTRAINT FK_Imagem_Evento
+FOREIGN KEY (ID_Imagem)
+REFERENCES tbl_Imagem (ID)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+ 
+ALTER TABLE tbl_UsuarioXGrupo ADD CONSTRAINT FK_UsuarioXGrupo
+FOREIGN KEY (ID_Usuario)
+REFERENCES tbl_Usuario (ID)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+ 
+ALTER TABLE tbl_UsuarioXGrupo ADD CONSTRAINT FK_GrupoXUsuario
+FOREIGN KEY (ID_Grupo)
+REFERENCES tbl_Grupo (ID)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+
+ALTER TABLE tbl_EventoXGrupo ADD CONSTRAINT FK_EventoXGrupo
+FOREIGN KEY (Cod_Evento)
+REFERENCES tbl_Evento (Cod)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+ 
+ALTER TABLE tbl_EventoXGrupo ADD CONSTRAINT FK_GrupoXEvento
+FOREIGN KEY (ID_Grupo)
+REFERENCES tbl_Grupo (ID)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+ 
+ALTER TABLE tbl_Classifica ADD CONSTRAINT FK_EventoXClassificacao
+FOREIGN KEY (Cod_Evento)
+REFERENCES tbl_Evento (Cod)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+ 
+ALTER TABLE tbl_Classifica ADD CONSTRAINT FK_ClassificacaoXEvento
+FOREIGN KEY (ID_Classificacao)
+REFERENCES tbl_Classificacao (ID)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+ 
+ALTER TABLE tbl_Favorita ADD CONSTRAINT FK_UsuarioXFavorita
+FOREIGN KEY (ID_Usuario)
+REFERENCES tbl_Usuario (ID)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+ 
+ALTER TABLE tbl_Favorita ADD CONSTRAINT FK_FavoritaXUsuario
+FOREIGN KEY (Cod_Evento)
+REFERENCES tbl_Evento (Cod)
+ON UPDATE CASCADE
+ON DELETE CASCADE;

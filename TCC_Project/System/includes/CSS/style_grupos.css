@@ -1,0 +1,97 @@
+.navbar-brand{
+    margin-left: 20px;
+}
+.user_pad{
+    margin-right: 20px;
+    
+}
+h2{
+    color: white;
+}
+
+.input_pesquisa{
+    height: 45px;
+    border-radius: 10px;
+    z-index: 1;
+
+}
+
+.form-inline{
+    margin-top: 5px;
+    text-align: center;
+}
+
+.results{
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    /*display: none;*/
+    position: absolute;
+    text-align: left; 
+    border-radius: 5px;
+    box-shadow: 0 4px 4px 1.5px #989898;
+    z-index: 1;
+    
+}
+
+.permissao {
+    border-radius: 5px;
+    height: 30px;
+    margin-right: 10px;
+    width: 130px;
+    font-size: 15px;
+}
+
+.item{
+    padding: 7px;
+    display: block;
+    font-size: larger;
+}
+.item:hover{
+    cursor: pointer;
+    background-color: #989898;
+}
+
+.dentro_grupo{
+    border-radius: 5px;
+    opacity: 1;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    position: relative;
+    /*z-index: 0;*/
+}
+
+.user_includes{ 
+    width: 700px;
+    padding: 7px;
+    font-size: larger;
+    display:flex;
+    width: 700px;
+}
+
+h5{
+    margin-top: 5px;
+    margin-left: 12px;
+}
+
+h7 {
+    margin-left: 47px;
+}
+
+.btnAdd {
+    margin-top: -30px;
+    margin-right: 5px;
+    border-radius: 5px;
+    float: right;
+}
+
+.btnExcluir{
+    margin-top: -60px;
+    margin-right: 10px;
+    border-radius: 5px;
+    float: right;
+}

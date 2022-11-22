@@ -1,0 +1,24 @@
+.fundo{
+    opacity: 1;
+}
+
+.excl_screen{
+    position: absolute;
+    display: none;
+    left: 50%;
+    background-color: white;
+    transform: translateX(-50%);
+    top: 28%;
+    height: 250px;
+    width: 450px;
+    border-radius: 15px;
+    z-index: 1;
+    text-align: center;
+}
+
+.bar_sup{
+    height: 25px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background-color: #0d57a1;
+}
