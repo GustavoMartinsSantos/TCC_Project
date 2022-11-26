@@ -77,7 +77,7 @@
             }
 
             $_SESSION['message'] = "<div class='sel alert alert-success' "
-            . "style='margin: auto; margin-bottom: 2%; position: static;'>Edição efetuada com sucesso!</div>";
+            . "style='margin: auto; margin-bottom: 2%; position: static;'>Cadastro efetuada com sucesso!</div>";
 
             header("Location: ../index.php");
         }

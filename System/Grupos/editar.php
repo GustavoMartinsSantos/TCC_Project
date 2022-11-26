@@ -32,8 +32,8 @@
         if(!isset($_POST['ids'])) {
             $message = "Nenhum aluno associado ao grupo!!";
             
-            $_SESSION['alert'] = "<div class='alert alert-danger' "
-            . "style='width: 35%; margin: auto; top: 7%'>{$message}</div>";
+            $_SESSION['alert'] = "<div class='sel alert alert-danger' "
+            . "style='width: 42%; margin: auto; margin-bottom: 2%; position: static;'>{$message}</div>";
 
             header("location: editar.php?id=" . $_GET['id']);    
         } else {

@@ -88,3 +88,9 @@ label{
     width: 680px;
     overflow: hidden;
 }
+
+.checkbox {
+    margin-left: 10px;
+    clear: both;
+    float: left;
+}

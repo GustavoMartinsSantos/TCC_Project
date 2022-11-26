@@ -1,7 +1,7 @@
 function contador(valor){
     var cont = valor.length;
-    const limite = 150;
-    document.querySelector('.desc').innerHTML =   cont + '/' + limite;
+    const limite = 200;
+    document.querySelector('.desc').innerHTML = cont + '/' + limite;
 }
 
 
@@ -28,4 +28,18 @@ function setMinMaxDate (setMax, tag, dateID, value) {
 		tag.setAttribute("max", dateInput.getAttribute("value"));
 	else
 		tag.setAttribute("min", dateInput.getAttribute("value"));
+}
+
+function checkAll (name, checkbox) {
+    var checkboxes = document.querySelectorAll("." + name);
+
+    if(checkbox.checked == true) {
+        checkboxes.forEach(function(checkInput){
+            checkInput.checked = true;
+        });
+    } else {
+        checkboxes.forEach(function(checkInput){
+            checkInput.checked = false;
+        });
+    }
 }

@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     define('PAGE_TITLE', 'Cadastrar');
     define("JS_INCLUDES", array('../includes/JS/principal.js', "../includes/JS/func_tela_cad.js"));
     define("CSS_INCLUDES", array('../includes/CSS/principal.css', '../includes/CSS/style_cad.css'));
@@ -32,16 +34,16 @@
         if (count(User::getUsers($db, $WHERE)) > 0)
             $message = 'Email já cadastrado!';
 
-        if (isset($_FILES['image'])) {
+        if ($_FILES['image']['error'] != 4) {
             $file = $_FILES['image'];
             $Image->setName(md5(time()));
             $Image->setError($file['error']);
             $Image->setExtension(pathinfo($file['name'])['extension']);
             $Image->setSize($file['size']);
             $Image->setTmpName($file['tmp_name']);
-            
-            $User->setImage($Image);
         }
+        
+        $User->setImage($Image);
 
         if(isset($message)) {
             $_SESSION['alert'] = "<div class='alert alert-danger' "
@@ -49,13 +51,20 @@
             header("Location: cadastrar.php");
             exit;
         }
+
+        if(isset($_SESSION['user']['ADM']) && $_SESSION['user']['ADM'])
+            $User->setADM(1);
     
         $User->INSERT($db);
 
-        $message = "Cadastro realizado com sucesso!";
-        $_SESSION['alert'] = "<div class='alert alert-success' "
-        . "style='width: 830px; margin: auto; top: 7%; margin-bottom: 20px'>{$message}</div>";
+        $_SESSION['user'] = array(
+            'id'    => $User->getID(),
+            'nome'  => $User->getFirstName(),
+            'imagem'=> $User->getImage()->getName(),
+            'ADM'   => $User->getADM(),
+            'groupPermission' => false
+        );
 
-        header("location: cadastrar.php");
+        header("location: ../index.php");
     }
 ?>

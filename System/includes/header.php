@@ -14,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
         <link rel="icon" type="imagem/png" href="<?php echo (PAGE_TITLE != 'SETEC') ? '../' : null ?>IMG/icon_header.png">
         <title><?php echo PAGE_TITLE ?></title>
         <?php
@@ -56,8 +56,11 @@
         alt="login" class="user_img" onclick="most_log()">
     </header>
     <div class="tela_login border border-2">
-        <h6 class="mt-2" style="height: 10px">&nbsp;Olá, <?php echo $_SESSION['user']['nome'] ?></h6>
+        <h6 style="height: 8px">&nbsp;Olá, <?php echo $_SESSION['user']['nome'] ?></h6>
         <hr>
+        <?php if($_SESSION['user']['ADM']) { ?>
+            <a class="links-log" href="<?php echo (PAGE_TITLE != 'SETEC') ? '../' : null ?>Usuario/cadastrar.php" target="_blank">&nbsp;Cadastrar ADM<i class="bi bi-person-add mx-2" style="float: right;"></i></a>
+        <?php } ?>
         <a class="links-log" href="<?php echo (PAGE_TITLE != 'SETEC') ? '../' : null ?>Usuario/editar.php" target="_blank">&nbsp;Meus dados <i class="bi bi-person-check-fill mx-2" style="float: right;"></i></a>
         <a class="links-log" href="<?php echo (PAGE_TITLE != 'SETEC') ? '../' : null ?>Usuario/logout.php">&nbsp;Sair<i class="bi bi-box-arrow-left mx-2" style="float: right;"></i></a> 
     </div>

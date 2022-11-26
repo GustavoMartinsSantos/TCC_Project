@@ -8,6 +8,11 @@
     
     require_once 'includes/autoloader.php';
 
+    if($_SESSION['user']['ADM'])
+	    $WHERE = "GROUP BY Grupo.ID";
+    else
+        $WHERE = "ID_Usuario = " . $_SESSION['user']['id'];
+
     $db = new Database();
     $Classificacoes = Classification::getClassificacoes($db);
     $Grupos = Group::getGroups($db, "WHERE ID_Usuario = " . $_SESSION['user']['id']);
@@ -23,7 +28,7 @@
     $WHERE = ["Titulo LIKE '%".str_replace(' ', '%', $search)."%'"];
 
     if($_SESSION['user']['ADM'])
-	$WHERE[] = "(UG.ID_Usuario = " . $_SESSION['user']['id'] . " OR UG.ID_Usuario IS NULL)";
+	    $WHERE[] = "(UG.ID_Usuario = " . $_SESSION['user']['id'] . " OR UG.ID_Usuario IS NULL)";
     else
         $WHERE[] = "UG.ID_Usuario = " . $_SESSION['user']['id'];
 
@@ -46,7 +51,7 @@
             $dataFilter_End = date('Y-m-t', strtotime($LastMonthQuarter));
             break;
         case 4:
-            $date = date('Y-m-d h:i');
+            $date = date('Y-m-d G:i');
             $dataFilter_Begin = $date;
             $dataFilter_End = $date;
         case 5:
@@ -69,6 +74,7 @@
     }
 
     $exists = false;
+
 
     foreach($Classificacoes as $Classificacao) {
         if($Classificacao->getName() == $typeFilter) {

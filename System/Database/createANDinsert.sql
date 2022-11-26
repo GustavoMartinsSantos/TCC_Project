@@ -149,7 +149,7 @@ INSERT INTO tbl_UsuarioXGrupo (ID_Grupo, ID_Usuario, Permissao) VALUES
 INSERT INTO tbl_Evento (Titulo, DataHora_Inicio, DataHora_Venc, Descricao, ID_Imagem) VALUES
 ('3º CGetec', '2022-11-05 07:00', '2022-11-05 13:30', null, null),
 ('Formatura', '2022-12-20 12:00', '2023-05-23 21:00', 'Esta será a cerimônia de encerramento do ensino médio dos terceiros anos', 4),
-('Pré-Banca', '2022-11-25 10:40', '2022-11-25 16:00', 'A pré-banca tem por função avaliar o desenvolvimento do trabalho e fazer recomendações para o seu desenvolvimento final. Ela avaliará se o estágio de desenvolvimento demonstra a possibilidade ou não de sua conclusão no prazo deste semestre.', 5);
+('Pré-Banca', '2022-11-25 10:40', '2022-11-25 16:00', 'A pré-banca tem por função avaliar o desenvolvimento do trabalho e fazer recomendações para o seu desenvolvimento final. Ela avaliará se o estágio de desenvolvimento demonstra a possibilidade ou não.', 5);
 
 INSERT INTO tbl_Classifica (Cod_Evento, ID_Classificacao) VALUES
 (1, 3), (1, 1), (2, 1),(3, 4);

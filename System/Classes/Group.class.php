@@ -59,7 +59,9 @@
                 GROUP BY G.ID
                 ORDER BY 2
                 ) AS Grupo
-            INNER JOIN tbl_UsuarioXGrupo UG ON UG.ID_Grupo = Grupo.ID ". $WHERE ." ORDER BY 2";
+            INNER JOIN tbl_UsuarioXGrupo UG ON UG.ID_Grupo = Grupo.ID 
+            ". $WHERE ." 
+            ORDER BY 2";
 
             $rows = $db->SELECT($query);
             $Groups = array();

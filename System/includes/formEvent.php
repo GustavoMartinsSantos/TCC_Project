@@ -1,4 +1,4 @@
-    <body style="margin-top: 100px;">
+<body style="margin-top: 100px;">
         <?php
             if(isset($_SESSION['alert'])) {
                 echo $_SESSION['alert'];
@@ -8,10 +8,10 @@
 
         <form method="POST" enctype="multipart/form-data">
             <div class="display_icons"><label for="title">Adicione um título</label> &nbsp;<i class="bi bi-card-text"></i></div>
-            <input type="text" name="title" class="forms sel" placeholder=" titulo..." required
+            <input type="text" name="title" class="forms sel" required
             value="<?php echo isset($Event) ? $Event->getTitulo() : null ?>"><br><br>
 
-            <div class="display_icons"><label for="capa">Adicione a capa do Evento</label> &nbsp;<i class="bi bi-image-fill"></i></div>
+            <div class="display_icons"><label for="capa">Adicione a capa do evento</label> &nbsp;<i class="bi bi-image-fill"></i></div>
 
             <div class="posi"><img name="capa" class="img2 prewview" 
             src="../IMG/<?php echo isset($Event) ? $Event->getImage()->getName() : 'event_pad.png' ?>">
@@ -29,15 +29,16 @@
             </select><br><br>
 
             <div class="display_icons"><label for="menu_seletor">O evento faz parte de </label> &nbsp;<i class="bi bi-check2-circle"></i></div>
-            <select class="forms sel" style="height: 120px;" name="Grupos[]" multiple required>
-            <?php foreach(Group::getGroups($db, "WHERE ID_Usuario = " . $_SESSION['user']['id']) as $Group) { ?>
-                    <option <?php 
-                        if(isset($Event))
-                            echo ($Event->SELECTED_Groups($Group->getID())) ? 'selected' : null;
-                  ?> value="<?php echo $Group->getID() ?>">
-                    <?php echo $Group->getName() ?></option>
-            <?php } ?>
-            </select><br><br>
+            <div class="forms sel" style="margin: auto; height: 120px; overflow-y: scroll" required>
+                <div class="checkbox"><input type="checkbox" onclick="checkAll('grupo', this)"> Todos</div>
+                <?php foreach(Group::getGroups($db, "WHERE ID_Usuario = " . $_SESSION['user']['id']) as $Group) { ?>
+                        <div class="checkbox"><input type="checkbox" class="grupo" name="Grupos[]" require
+                        <?php if(isset($Event))
+                                echo ($Event->SELECTED_Groups($Group->getID())) ? 'checked' : null;
+                    ?> value="<?php echo $Group->getID() ?>">
+                        <?php echo $Group->getName() ?></div>
+                <?php } ?>
+            </div><br><br>
 
             <div class="esp">
                 <label for="date" required>Data de Início: </label>

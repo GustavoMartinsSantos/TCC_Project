@@ -23,11 +23,14 @@
     $db = new Database();
 
     if(isset($_POST['title'])) { 
-        if(!isset($_POST['ids'])) { ?>
-            <script>
-                alert('Nenhum aluno associado ao grupo!!');
-            </script>
-<?php   } else {
+        if(!isset($_POST['ids'])) {
+            $message = "Nenhum aluno associado ao grupo!!";
+            
+            $_SESSION['alert'] = "<div class='sel alert alert-danger' "
+            . "style='width: 42%; margin: auto; margin-bottom: 2%; position: static;'>{$message}</div>";
+
+            header("location: editar.php?id=" . $_GET['id']);    
+        } else {
             $name = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING);
 
             if($name == null) {

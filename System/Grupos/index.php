@@ -16,8 +16,13 @@
         unset($_SESSION['alert']);
     }
 
+    if($_SESSION['user']['ADM'])
+	    $WHERE = "GROUP BY Grupo.ID";
+    else
+        $WHERE = "ID_Usuario = " . $_SESSION['user']['id'];
+
     $db = new Database();
-    $Groups = Group::getGroups($db, "WHERE ID_Usuario = " . $_SESSION['user']['id']);
+    $Groups = Group::getGroups($db, $WHERE);
 
     require '../includes/groups.php';
 ?>

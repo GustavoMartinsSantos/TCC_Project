@@ -52,7 +52,6 @@
                             if($_SESSION['user']['ADM'] || $_SESSION['user']['groupPermission']) { ?>
                                 <a href="Grupos/index.php"><i class="bi bi-people" onmouseover="most_group()" onmouseleave="clean_group()"></i></a>
                         <?php } ?>
-                        <i class="bi bi-chat-left-dots" onmouseover="most_chat()" onmouseleave="clean_chat()"></i>
                     </div>
                 </div>
                 <div class="col">

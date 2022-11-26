@@ -7,7 +7,7 @@
         private $Email;
         private $Password;
         private $Image;
-        private $ADM;
+        private $ADM = 0;
 
         public function setID ($id) {
             $this->ID = $id;
@@ -84,7 +84,8 @@
                 'Nome'      => $this->getFirstName(),
                 'Sobrenome' => $this->getLastName(),
                 'Email'     => $this->getEmail(),
-                'Senha'     => $this->getPassword()
+                'Senha'     => $this->getPassword(),
+                'ADM'       => $this->getADM()
             );
 
             if(isset($this->Image))
