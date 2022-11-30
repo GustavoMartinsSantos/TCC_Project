@@ -9,6 +9,17 @@
 ?>
 <html lang="pt-BR">
     <head>
+        <style>            
+            .logo {
+                position: fixed;
+                cursor: pointer; 
+                top: 7px;
+                right: 4%;
+                width: 53px;
+                height: 50px;
+                border-radius: 50%;
+            }
+        </style>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,7 +64,7 @@
         ?>
 
         <img src="<?php echo (PAGE_TITLE != 'SETEC') ? '../' : null ?>IMG/<?php echo isset($_SESSION['user']['imagem']) ? $_SESSION['user']['imagem'] : 'user_pad.png' ?>"
-        alt="login" class="user_img" onclick="most_log()">
+        alt="login" class="logo" onclick="most_log()">
     </header>
     <div class="tela_login border border-2">
         <h6 style="height: 8px">&nbsp;Olá, <?php echo $_SESSION['user']['nome'] ?></h6>

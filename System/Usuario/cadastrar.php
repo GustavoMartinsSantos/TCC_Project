@@ -47,7 +47,7 @@
 
         if(isset($message)) {
             $_SESSION['alert'] = "<div class='alert alert-danger' "
-            . "style='width: 830px; margin: auto; top: 7%; margin-bottom: 20px'>{$message}</div>";
+            . "style='width: 830px; margin: auto; top: 9%; margin-bottom: 20px'>{$message}</div>";
             header("Location: cadastrar.php");
             exit;
         }

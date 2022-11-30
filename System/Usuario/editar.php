@@ -54,7 +54,7 @@
 
         if(isset($message)) {
             $_SESSION['mensagem'] = "<div class='alert alert-danger' "
-            . "style='width: 830px; margin: auto; top: 7%; margin-bottom: 20px'>{$message}</div>";
+            . "style='width: 830px; margin: auto; top: 9%; margin-bottom: 20px'>{$message}</div>";
             header("Location: editar.php");
             exit;
         }
@@ -62,8 +62,16 @@
         $User->UPDATE($db);
         
         $_SESSION['mensagem'] = "<div class='alert alert-success' "
-        . "style='width: 830px; margin: auto; top: 7%; margin-bottom: 20px'>Atualização realizada com sucesso</div>";
+        . "style='width: 830px; margin: auto; top: 9%; margin-bottom: 20px'>Atualização realizada com sucesso</div>";
         
+        $_SESSION['user'] = array(
+            'id'    => $User->getID(),
+            'nome'  => $User->getFirstName(),
+            'imagem'=> $User->getImage()->getName(),
+            'ADM'   => $User->getADM(),
+            'groupPermission' => false
+        );
+
         header("location: editar.php");
     }
 ?>
