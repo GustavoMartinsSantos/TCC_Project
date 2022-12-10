@@ -8,6 +8,8 @@
 
     $db = new Database();
 
+    print_r($_SESSION['user']);
+
     $WHERE = "WHERE U.ID = '" . $_SESSION['user']['id'] . "'";
 
     $User = User::getUsers(new Database(), $WHERE)[0];
@@ -30,26 +32,25 @@
                 $message = 'Email já cadastrado';
         }
 
-        $Image = new File();
         $User->setEmail($email);
         $User->setPassword($password);
         
         if(!$User->setName($name))
             $message = 'Digite um nome válido!';
+        if (!Email::verifyEmail($User->getEmail()))
+            $message = 'Esse email não existe!';
 
-        if (isset($_FILES['image'])) {
+        if ($_FILES['image']['error'] != 4) {
+            $Image = new File();
             $file = $_FILES['image'];
 
-            if($file['error'] == 0) {
-                $Image->setID($User->getImage()->getID());
-                $Image->setName(md5(time()));
-                $Image->setError($file['error']);
-                $Image->setExtension(pathinfo($file['name'])['extension']);
-                $Image->setSize($file['size']);
-                $Image->setTmpName($file['tmp_name']);
-
-                $User->setImage($Image);
-            }
+            $Image->setID($User->getImage()->getID());
+            $Image->setName(md5(time()));
+            $Image->setError($file['error']);
+            $Image->setExtension(pathinfo($file['name'])['extension']);
+            $Image->setSize($file['size']);
+            $Image->setTmpName($file['tmp_name']);
+            $User->setImage($Image);
         }
 
         if(isset($message)) {

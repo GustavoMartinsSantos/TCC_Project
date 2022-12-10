@@ -167,13 +167,13 @@ a{
 .txt_tit{
     position: relative;
     top: 15%;
-    display: inline-flex;
     width: 67%;
 }
 
 .tit_pos{
     position: relative;
     left: -100px;
+    width: 80%;
 }
 
 .txt_event{
@@ -208,9 +208,8 @@ a{
     border-radius: 7px;
 }
 
-.btn_atrasado{
+.btn_excluir {
     position: absolute;
-    top: 50%;
     left: 67%;
     height: 35px;
     border-radius: 7px;

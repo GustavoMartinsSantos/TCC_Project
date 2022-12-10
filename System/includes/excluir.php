@@ -1,4 +1,6 @@
 <?php    
+    session_start();
+    
     require_once '../includes/autoloader.php';
 
     $cat = isset($_POST['cat']) ? $_POST['cat'] : false;
@@ -19,16 +21,20 @@
             $Group->DELETE($db);
             break;
         case 'e':
-            $Event = new Event();
-            $Event->setCod($_POST['id']);
-
+            $Event = Event::getEvents($db, "WHERE Cod = ".$_POST['id'])[0];
             $Event->DELETE($db);
+
             break;
         case 'u':
-            $User = new User();
+            $User = User::getUsers($db, "WHERE U.ID = ".$_POST['id'])[0];
             $User->setID($_POST['id']);
 
             $User->DELETE($db);
+
+            unset($_SESSION['user']);
+
+            $_SESSION['alert'] = "<div class='alert alert-success' "
+            . "style='width: 35%; margin: auto; margin-bottom: 1%; top: 5%'>Conta excluída com sucesso!</div>";
             break;
     }
 ?>

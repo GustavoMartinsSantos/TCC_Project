@@ -45,7 +45,7 @@
 
                                     <?php if($_SESSION['user']['ADM']) { ?>
                                         <button class="btn btn-danger bt" 
-                                        onclick="btn_ex(false, '<?php echo $Group->getName() ?>','g', <?php echo $Group->getID() ?>)">
+                                        onclick="btn_ex(false, '<?php echo $Group->getName() ?>','g', <?php echo $Group->getID() ?>,'Grupos/index.php')">
                                             <i class="bi bi-trash-fill"></i>
                                         </button>
                                     <?php } ?>

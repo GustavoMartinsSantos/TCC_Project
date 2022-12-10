@@ -12,6 +12,12 @@
         <link rel="stylesheet" href="../includes/CSS/style_log_resp.css">    
     </head>
     <body>
+        <?php
+            if(isset($_SESSION['alert'])) {
+                echo $_SESSION['alert'];
+                unset($_SESSION['alert']);
+            }
+        ?>
         <form method="POST">
             <div class="title">
                 <h1>Login</h1><br>
@@ -31,8 +37,13 @@
                             <div class="col-md-6 col-12">
                                 <p><a href="../Usuario/cadastrar.php"><input type="button" value="Cadastrar-se" class="btn btn-secondary w-75"></a><br></p>
                             </div>
+
                             <div class="col-md-6 col-12">
                                 <input type="submit" value="Entrar" class="btn btn-dark w-75">
+                            </div>
+
+                            <div class="linkPasswd">
+                                <a id="linkPasswd" href="forgotPasswd.php" style="text-decoration: none;">Esqueci minha senha</a></button>
                             </div>
                         </div>
                     </div>

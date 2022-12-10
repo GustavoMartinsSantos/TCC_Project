@@ -55,7 +55,7 @@
             $dataFilter_Begin = $date;
             $dataFilter_End = $date;
         case 5:
-            $dataFilter_End = date('Y-m-d');
+            $dataFilter_End = date('Y-m-d G:i');
             break;
     }
 
@@ -124,7 +124,4 @@
 
     require_once 'includes/header.php';
     require_once 'includes/principal.php';
-
-    /*$email = new Email($_SESSION['user'], 'teste', file_get_contents('Email_Pages/forgotPasswd.html'));
-    $email->send();*/
 ?>

@@ -8,7 +8,7 @@
             </div>
             
             <div class="mt-4 col-md-5 col- mb-2" style="margin-left: auto; margin-right: auto;">
-                <input class="input_pesquisa mt-3 col-md-5 col-5 form-control" type="search" id="search" placeholder="Digite o nome do aluno" autocomplete="off">
+                <input class="input_pesquisa mt-3 col-md-5 col-5 form-control" type="search" id="search" placeholder="Digite o nome de uma pessoa" autocomplete="off">
             </div>
 
             <!-- Resultados da busca -->

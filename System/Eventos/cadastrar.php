@@ -25,6 +25,8 @@
 
             if($title == null)
                 $mensagem = 'Digite um título válido!';
+            if(!isset($_POST['Grupos']))
+                $mensagem = "O evento não faz parte de nenhum grupo!";
 
             $Event = new Event();
             $Image = new File();

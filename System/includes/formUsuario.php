@@ -18,7 +18,14 @@
   <body>
     <div id="area">
       <legend>
-        <?php echo (PAGE_TITLE == 'Cadastrar') ? 'Cadastro' : 'Editar' ?>
+      <?php
+          if(PAGE_TITLE == 'Editar meu perfil')
+            echo 'Editar';
+          else if(isset($_SESSION['user']['ADM']) && $_SESSION['user']['ADM'])
+            echo 'Cadastrar Administrador';
+          else
+            echo 'Cadastrar';
+        ?>
       </legend><br><br>
 
       <form name="cadastro" method="POST" enctype="multipart/form-data">
@@ -41,9 +48,14 @@
                 <input type="email" name="email" class="text_box" size="60" placeholder="Digite seu e-mail" required
                 value="<?php echo isset($User) ? $User->getEmail() : '' ?>"><br><br>
                 
+                
                 <input type="password" name="passwd" class="senha text_box" size="60" minlength="8" maxlength="16" required onchange="conf()" placeholder="Senha"
                 value="<?php echo isset($User) ? $User->getPassword() : '' ?>"><br><br>
-                <input type="password" class="senha1 text_box" size="60" minlength="8" maxlength="16" required onchange="conf()" placeholder="Confirme sua senha"><br><br>
+                <input type="password" size="60" class="senha1 text_box" <?php echo isset($User) ? 'style="margin-right: 18%; width: 47%"' : null ?> minlength="8" maxlength="16" required onchange="conf()" placeholder="Confirme sua senha">
+
+                <?php if(isset($User)) { ?>
+                  <a href="../Usuario/excluir_conta.php"><div class="btn_excluir bg-danger border-0 text-white px-2" style="display: inline-block">Excluir Conta</div></a><br><br>
+                <?php } ?>
               </div>
             </div><br>
 

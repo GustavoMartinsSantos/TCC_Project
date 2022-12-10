@@ -56,11 +56,12 @@
                 </div>
                 <div class="col">
                 <?php foreach($Events as $Event) {
-                    $date = date('Y-m-d G:i');
+                    $date = date('Y-m-d H:i:00');
                     
                     $dataInicio = ($Event->getDataHora_Inicio() != null) ? new DateTime($Event->getDataHora_Inicio()) : null;
-                    $betweenDates = ($dataFilter != 4 && $Event->getDataHora_Inicio() <= $date && $Event->getDataHora_Venc() > $date) ? true : false;
-                    $outOfDate = ($dataFilter != 5 && $Event->getDataHora_Venc() < date('Y-m-d h:i')) ? true : false; ?>
+                    $betweenDates = ($dataFilter != 4 && ($Event->getDataHora_Inicio() <= $date) && ($Event->getDataHora_Venc() > $date)) ? true : false;
+                    
+                    $outOfDate = ($dataFilter != 5 && $Event->getDataHora_Venc() <= $date) ? true : false; ?>
                     <!-- style="<?php //echo $outOfDate ? "color: white; background-color: rgba(255,0,0,0.5)" : null ?>"-->
                     <p><div class="events w-100" style="<?php echo $outOfDate ? "color: white; background-color: rgba(255,0,0,0.5)" : null;
                                                         echo $betweenDates ? "background-color: rgba(255,255,127)" : null ?>">
@@ -82,7 +83,7 @@
                         
                         <div class="txt_tit">
                             <h2 class="tit_pos mb-3"><?php echo $Event->getTitulo() ?></h2>
-                            <h7 class="txt_event"><?php echo $Event->getDescricao() ?></h7>
+                            <h6 class="tit_pos" style="word-wrap: break-word;"><?php echo $Event->getDescricao() ?></h6>
 
                             <button class="btn_fav bg-transparent" onclick="fav(<?php echo $Event->getCod() ?>,<?php echo $_SESSION['user']['id'] ?>)">
                                 <i class="fav_icon bi <?php echo $Event->getFavorito() ? 'bi-star-fill' : 'bi-star' ?>" 
@@ -95,7 +96,7 @@
                             <?php } */?>
                         <?php if($_SESSION['user']['ADM'] || $Event->getPermission()) { ?>
                             <button class="btn_x bg-danger border-0"
-                            onclick="btn_ex(true, '<?php echo $Event->getTitulo() ?>','e',<?php echo $Event->getCod() ?>)">
+                            onclick="btn_ex(true, '<?php echo $Event->getTitulo() ?>','e',<?php echo $Event->getCod() ?>,'index.php')">
                                 <i class="bi bi-trash-fill ex2"></i>
                             </button>
                         <?php } ?>

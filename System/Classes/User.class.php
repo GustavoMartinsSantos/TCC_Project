@@ -6,6 +6,7 @@
         private $LastName = '';
         private $Email;
         private $Password;
+        private $RecSenhaToken;
         private $Image;
         private $ADM = 0;
 
@@ -60,6 +61,14 @@
             return utf8_decode($this->Password);
         }
 
+        public function setRecSenha ($hash) {
+            $this->RecSenhaToken = utf8_encode($hash);
+        }
+
+        public function getRecSenha () {
+            return $this->RecSenhaToken;
+        }
+
         public function setImage ($file) {
             $this->Image = $file;
         }
@@ -91,7 +100,7 @@
             if(isset($this->Image))
                 $values['ID_Imagem'] = $this->Image->getID();
 
-            $db->INSERT(self::$table, $values);
+            $this->setID($db->INSERT(self::$table, $values));
         }
 
         public static function getUsers ($db, $WHERE) {
@@ -130,17 +139,18 @@
         }
 
         public function UPDATE($db) {
-            if(isset($this->Image))
+            if($this->Image->getSize() != null)
                 $this->Image->UPDATE($db);
 
             $values = array(
                 'Nome'      => $this->getFirstName(),
                 'Sobrenome' => $this->getLastName(),
                 'Email'     => $this->getEmail(),
-                'Senha'     => $this->getPassword()
+                'Senha'     => $this->getPassword(),
+                'RecSenhaToken' => $this->getRecSenha()
             );
 
-            if(isset($this->Image)) {
+            if($this->Image->getSize() != null) {
                 $IMG_ID = $this->Image->getID();
                 $values['ID_Imagem'] = $IMG_ID;
             }
@@ -149,6 +159,9 @@
         }
 
         public function DELETE ($db) {
+            if($this->Image->getID() != null)
+                $this->Image->DELETE($db);
+
             return $db->DELETE(self::$table, ['ID' => $this->getID()]);
         }
     }

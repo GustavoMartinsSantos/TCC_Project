@@ -257,6 +257,9 @@
         }
 
         public function DELETE ($db) {
+            if($this->Image->getID() != null)
+                $this->Image->DELETE($db);
+
             return $db->DELETE(self::$table, ['Cod' => $this->getCod()]);
         }
     }

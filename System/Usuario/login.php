@@ -2,12 +2,6 @@
     session_start();
 
     require_once '../includes/autoloader.php';
-
-    if(isset($_SESSION['alert'])) {
-        echo $_SESSION['alert'];
-        unset($_SESSION['alert']);
-    }
-
     require_once '../includes/formLogin.php';
 
     $db = new Database();
@@ -24,7 +18,7 @@
             $message = "Email ou Senha incorretos!!";
             
             $_SESSION['alert'] = "<div class='alert alert-danger' "
-            . "style='width: 35%; margin: auto; top: 7%'>{$message}</div>";
+            . "style='width: 35%; margin: auto; margin-bottom: 1%; top: 5%'>{$message}</div>";
 
             header("location: login.php");
         } else {

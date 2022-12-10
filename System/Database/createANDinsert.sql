@@ -8,6 +8,7 @@ CREATE TABLE tbl_Usuario (
     Sobrenome VARCHAR(100),
     Email VARCHAR(100) NOT NULL UNIQUE,
     Senha VARCHAR(10) NOT NULL,
+    RecSenhaToken VARCHAR(220),
     ADM INT NOT NULL,
     ID_Imagem INT
 );
@@ -24,7 +25,7 @@ CREATE TABLE tbl_Grupo (
 
 CREATE TABLE tbl_Classificacao (
     ID INT PRIMARY KEY AUTO_INCREMENT,
-    Nome VARCHAR(50)
+    Nome VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE tbl_Evento (
@@ -149,13 +150,14 @@ INSERT INTO tbl_UsuarioXGrupo (ID_Grupo, ID_Usuario, Permissao) VALUES
 INSERT INTO tbl_Evento (Titulo, DataHora_Inicio, DataHora_Venc, Descricao, ID_Imagem) VALUES
 ('3º CGetec', '2022-11-05 07:00', '2022-11-05 13:30', null, null),
 ('Formatura', '2022-12-20 12:00', '2023-05-23 21:00', 'Esta será a cerimônia de encerramento do ensino médio dos terceiros anos', 4),
-('Pré-Banca', '2022-11-25 10:40', '2022-11-25 16:00', 'A pré-banca tem por função avaliar o desenvolvimento do trabalho e fazer recomendações para o seu desenvolvimento final. Ela avaliará se o estágio de desenvolvimento demonstra a possibilidade ou não.', 5);
+('Pré-Banca', '2022-11-25 10:40', '2022-11-25 16:00', 'A pré-banca tem por função avaliar o desenvolvimento do trabalho e fazer recomendações para o seu desenvolvimento final. Ela avaliará se o estágio de desenvolvimento demonstra a possibilidade ou não.', 5),
+('Banca de TCC', '2022-12-07 07:00', '2022-12-07 16:00', 'A banca do TCC é formada por uma comissão de professores avaliadores. Seu papel consiste em determinar se o aluno atingiu um desempenho satisfatório na elaboração da pesquisa.', null);
 
 INSERT INTO tbl_Classifica (Cod_Evento, ID_Classificacao) VALUES
-(1, 3), (1, 1), (2, 1),(3, 4);
+(1, 3), (1, 1), (2, 1),(3, 4), (4, 4);
 
 INSERT INTO tbl_EventoXGrupo (ID_Grupo, Cod_Evento) VALUES
-(1, 1), (1, 2), (2, 1), (2, 2), (3, 1), (1, 3);
+(1, 1), (1, 2), (2, 1), (2, 2), (3, 1), (1, 3), (1, 4);
 
 INSERT INTO tbl_Favorita (ID_Usuario, Cod_Evento) VALUES
 (2, 1), (4, 1), (3, 2);

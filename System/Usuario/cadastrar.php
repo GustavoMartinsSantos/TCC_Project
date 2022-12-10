@@ -33,6 +33,8 @@
 
         if (count(User::getUsers($db, $WHERE)) > 0)
             $message = 'Email já cadastrado!';
+        if (!Email::verifyEmail($User->getEmail()))
+            $message = 'Esse email não existe!';
 
         if ($_FILES['image']['error'] != 4) {
             $file = $_FILES['image'];

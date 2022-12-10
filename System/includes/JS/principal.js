@@ -30,19 +30,19 @@ function most_chat(){ document.querySelector('.resp').innerHTML = 'Suporte'; } f
 
 function most_group(){ document.querySelector('.resp').innerHTML = 'Grupos'; } function clean_group(){ document.querySelector('.resp').innerHTML = ''; }
 
-function btn_ex(principal, nome, cat, id){
+function btn_ex(principal, nome, cat, id, reload){
     var screen = document.querySelector('.excl_screen');
     var title = document.querySelector('.titleWindow');
     var button = document.querySelector('#btnExcluir');
     var fundo = document.querySelector('.fundo');
 
-    button.setAttribute("onclick", "btn_ex_conf(" + principal + ",'" + cat + "'," + id + ")");
+    button.setAttribute("onclick", "btn_ex_conf(" + principal + ",'" + cat + "'," + id + ",'"+reload+"')");
     title.textContent = 'deseja excluir ' + nome + '?';
     fundo.style.opacity = '0.3';
     screen.style.display = 'block';
 }
 
-function btn_ex_conf (principal, cat, id) {
+function btn_ex_conf (principal, cat, id, reload) {
     var link = '../includes/excluir.php';
 
     if(principal)
@@ -58,7 +58,7 @@ function btn_ex_conf (principal, cat, id) {
          }
     });
     
-    document.location.reload(true);
+    window.location = '../' + reload;
 }
 
 function sair(){

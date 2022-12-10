@@ -52,7 +52,7 @@
             </div>
 
             <div class="display_icons"><label for="descricao">Insira uma descrição</label> &nbsp;<i class="bi bi-body-text"></i></div>
-            <textarea name="descricao" class="descricao forms sel" rows="5" placeholder="Descrição do Evento..."  maxlength="150" onkeydown="contador(this.value)"><?php echo isset($Event) ? $Event->getDescricao() : null ?></textarea><br>
+            <textarea name="descricao" class="descricao forms sel" rows="5" placeholder="Descrição do Evento..."  maxlength="200" onkeydown="contador(this.value)"><?php echo isset($Event) ? $Event->getDescricao() : null ?></textarea><br>
             <label for="descricao" class="desc bg-secundary"></label><br><br>
 
             <button type="submit" class="btn btn-warning sel">

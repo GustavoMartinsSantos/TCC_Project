@@ -4,7 +4,7 @@
         session_start();
 
         if(!isset($_SESSION['user']))
-            header("location: Usuario/login.php");
+            header("location: ../Usuario/login.php");
     }
 ?>
 <html lang="pt-BR">

@@ -18,7 +18,12 @@ function most_pass(){
     }
 }
 
+function setForgotPasswdLink (link) {
+    var linkForgotPasswd = document.querySelector('#linkPasswd');
+    var link = "../Usuario/forgotPasswd.php?email=" + link;
 
+    linkForgotPasswd.setAttribute("href", link);
+}
 
 function boxfocus(){
     let lb_email = document.querySelector('.lb_email');
@@ -32,6 +37,7 @@ function boxblur(veri){
     if( cont == 0 ){ lb_email.style.transform = 'translateY(0px)';  }
     else{ lb_email.style.transform = 'translateY(-23px)';  }
     
+    setForgotPasswdLink(veri);
 }
 
 function boxfocus1(){
